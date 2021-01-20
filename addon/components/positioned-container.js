@@ -9,7 +9,9 @@ const SUPPORTED_TARGET_ATTACHMENTS = [
 ];
 
 export default Component.extend({
-
+  ariaRole: 'dialog',
+  attributeBindings: ['aria-labelledby', 'aria-describedby'],
+  
   // target - element selector, element, or Ember View
   // targetAttachment - top, right, bottom, left, center, or none
   //   left, right, top, bottom (relative to target)

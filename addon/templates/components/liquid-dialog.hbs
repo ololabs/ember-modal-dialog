@@ -14,7 +14,7 @@
         >
         </div>
       {{/if}}
-      <div class={{containerClassNamesString}}>
+      <div class={{containerClassNamesString}} role="dialog" aria-labelledby={{aria-labelledby}} aria-describedby={{aria-describedby}}>
         {{yield}}
       </div>
     </div>
@@ -32,12 +32,12 @@
         tabindex="-1"
         data-emd-overlay
       >
-        <div class={{containerClassNamesString}}>
+        <div class={{containerClassNamesString}} role="dialog" aria-labelledby={{aria-labelledby}} aria-describedby={{aria-describedby}}>
           {{yield}}
         </div>
       </div>
     {{else}}
-      <div class={{containerClassNamesString}}>
+      <div class={{containerClassNamesString}} role="dialog" aria-labelledby={{aria-labelledby}} aria-describedby={{aria-describedby}}>
         {{yield}}
       </div>
     {{/if}}

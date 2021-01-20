@@ -22,13 +22,17 @@ module('Acceptance: modal-dialog | animatable', function(hooks) {
     await assert.dialogOpensAndCloses({
       openSelector: '#example-basic button',
       dialogText: 'Basic',
-      closeSelector: wrapperSelector
+      closeSelector: wrapperSelector,
+      ariaLabelId: 'example-basic-title',
+      ariaDescriptionId: 'example-basic-desc'
     });
 
     await assert.dialogOpensAndCloses({
       openSelector: '#example-basic button',
       dialogText: 'Basic',
-      closeSelector: dialogCloseButton
+      closeSelector: dialogCloseButton,
+      ariaLabelId: 'example-basic-title',
+      ariaDescriptionId: 'example-basic-desc'
     });
   });
 
@@ -36,13 +40,17 @@ module('Acceptance: modal-dialog | animatable', function(hooks) {
     await assert.dialogOpensAndCloses({
       openSelector: '#example-translucent button',
       dialogText: 'With Translucent Overlay',
-      closeSelector: wrapperSelector
+      closeSelector: wrapperSelector,
+      ariaLabelId: 'example-translucent-title',
+      ariaDescriptionId: 'example-translucent-desc'
     });
 
     await assert.dialogOpensAndCloses({
       openSelector: '#example-translucent button',
       dialogText: 'With Translucent Overlay',
-      closeSelector: dialogCloseButton
+      closeSelector: dialogCloseButton,
+      ariaLabelId: 'example-translucent-title',
+      ariaDescriptionId: 'example-translucent-desc'
     });
   });
 
@@ -54,12 +62,16 @@ module('Acceptance: modal-dialog | animatable', function(hooks) {
       whileOpen() {
         assert.dom(overlaySelector).hasClass('custom-styles-overlay', 'has provided overlayClass');
         assert.dom(dialogSelector).hasClass('custom-styles-modal-container', 'has provided containerClass');
-      }
+      },
+      ariaLabelId: 'example-custom-styles-title',
+      ariaDescriptionId: 'example-custom-styles-desc'
     });
     await assert.dialogOpensAndCloses({
       openSelector: '#example-custom-styles button',
       dialogText: 'Custom Styles',
-      closeSelector: dialogCloseButton
+      closeSelector: dialogCloseButton,
+      ariaLabelId: 'example-custom-styles-title',
+      ariaDescriptionId: 'example-custom-styles-desc'
     });
   });
 
@@ -70,7 +82,9 @@ module('Acceptance: modal-dialog | animatable', function(hooks) {
       closeSelector: overlaySelector,
       whileOpen() {
         assert.dom(dialogSelector).hasClass('my-cool-modal', 'has provided containerClassNames');
-      }
+      },
+      ariaLabelId: 'my-cool-title',
+      ariaDescriptionId: 'my-cool-desc'
     });
   });
 });

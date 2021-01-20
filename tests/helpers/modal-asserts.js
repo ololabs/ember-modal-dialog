@@ -31,6 +31,13 @@ export default function registerAssertHelpers() {
     await waitUntil(function() {
       return findContains(dialogSelector, options.dialogText);
     });
+    if (options.ariaLabelId) {
+      assert.isAccessibleDialog(dialogSelector);
+      assert.hasAccessibleLabel(dialogSelector, options.ariaLabelId);
+    }
+    if (options.ariaDescriptionId) {
+      assert.hasAccessibleDescription(dialogSelector, options.ariaDescriptionId);
+    }
     if (options.hasOverlay) {
       self.isPresentOnce(overlaySelector);
     }
@@ -43,4 +50,19 @@ export default function registerAssertHelpers() {
     });
     self.isAbsent(overlaySelector);
   };
+
+  assert.isAccessibleDialog = function(selector, message) {
+    message = message || `${selector} has aria dialog role`;
+    return this.dom(selector).hasAttribute('role', 'dialog', message);
+  }
+
+  assert.hasAccessibleLabel = function(selector, labelId, message) {
+    message = message || `${selector} has aria dialog label`;
+    return this.dom(selector).hasAttribute('aria-labelledby', labelId, message);
+  }
+
+  assert.hasAccessibleDescription = function(selector, descriptionId, message) {
+    message = message || `${selector} has aria dialog describes`;
+    return this.dom(selector).hasAttribute('aria-describedby', descriptionId, message);
+  }
 }
